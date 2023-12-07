@@ -1,0 +1,18 @@
+{
+  "name": "@mavvy/minigql-plugin-mongoose-extra",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Warn: no test specified\"",
+    "build": "echo \"Warn: no build specified\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
