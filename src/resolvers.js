@@ -1,28 +1,9 @@
-import bcrypt from 'bcryptjs';
-import * as jwt from './jwt.js';
+import { handleCreateUser, handleLoginUser } from './user-utils.js';
 
 const loginUser = {
   handler: async ({ input, models }) => {
-    const { email, password } = input;
-    const userModel = models.User();
-    const user = await userModel.db.findOne({ email, isDeleted: false });
-
-    if (!user) {
-      throw new Error('invalid_login');
-    }
-
-    const verify = await bcrypt.compare(password, user.password);
-
-    if (!verify) {
-      throw new Error('invalid_login');
-    }
-
-    const token = jwt.generate({
-      id: user._id.toString(),
-      token: user.clientToken,
-      role: user.role,
-    });
-
+    const model = models.User().db;
+    const token = await handleLoginUser(input, model);
     return { token };
   },
   name: 'loginUser',
@@ -30,4 +11,15 @@ const loginUser = {
   returnType: 'Token',
 };
 
-export default [loginUser];
+const createUser = {
+  handler: async ({ input, models }) => {
+    const model = models.User().db;
+    const token = await handleCreateUser(input, model);
+    return { token };
+  },
+  name: 'createUser',
+  inputVariable: 'CreateUserInput!',
+  returnType: 'Token',
+};
+
+export default [loginUser, createUser];

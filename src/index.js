@@ -5,9 +5,20 @@ const schema = `
 type Token {
   token: String
 }
+type Status {
+  status: Boolean
+}
 input LoginUserInput {
   email: String!
   password: String!
+}
+input CreateUserInput {
+  email: String!
+  password: String!
+  firstName: String!
+  lastName: String!
+  gender: String!
+  birthday: String!
 }
 `;
 

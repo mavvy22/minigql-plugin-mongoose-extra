@@ -9,7 +9,7 @@
     "build": "echo \"Warn: no build specified\""
   },
   "keywords": [],
-  "author": "",
+  "author": "Marc Jeric Espiritu",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
